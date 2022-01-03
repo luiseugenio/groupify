@@ -13,8 +13,8 @@ module Groupify
       extend ActiveSupport::Concern
 
       included do
-        belongs_to :member, polymorphic: true
-        belongs_to :group, polymorphic: true
+        belongs_to :member, polymorphic: true, optional: true
+        belongs_to :group, polymorphic: true, optional: true
       end
 
       def membership_type=(membership_type)
