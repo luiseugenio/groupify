@@ -13,12 +13,10 @@ module Groupify
       extend ActiveSupport::Concern
 
       included do
-        belongs_to :member, polymorphic: true
-        if ActiveSupport::VERSION::STRING > '4.1'
-          belongs_to :group, polymorphic: true, optional: true
-        else
-          belongs_to :group, polymorphic: true
-        end
+        self.belongs_to_required_by_default = false
+
+        belongs_to :member, polymorphic: true, optional: true
+        belongs_to :group, polymorphic: true, optional: true
       end
 
       def membership_type=(membership_type)
