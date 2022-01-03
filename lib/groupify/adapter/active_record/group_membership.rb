@@ -15,7 +15,7 @@ module Groupify
       included do
         belongs_to :member, polymorphic: true
         if ActiveSupport::VERSION::STRING > '4.1'
-          belongs_to :group, polymorphic: true, required: false
+          belongs_to :group, polymorphic: true, optional: true
         else
           belongs_to :group, polymorphic: true
         end
